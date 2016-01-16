@@ -10,6 +10,29 @@ $app->get('/', function () use ($app) {
 });
 
 
+//test API points
+$app->post('/echo', function () use ($app) {
+  $postdata = file_get_contents("php://input");
+  $request = json_decode($postdata);
+  
+  echo json_encode(['status' => 'success',
+                      'data' => $request->data,
+                      'message' => ''
+                     ]);
+});
 
+
+$app->post('/echo_inc', function () use ($app) {
+  $postdata = file_get_contents("php://input");
+  $request = json_decode($postdata);
+  
+  echo json_encode(['status' => 'success',
+                      'data' => $request->data+1,
+                      'message' => ''
+                     ]);
+});
+
+           
+           
 $app->run();
 ?>
