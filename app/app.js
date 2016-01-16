@@ -9,6 +9,6 @@ app.service('service', function($http, config) {
 });
 
 app.controller('controller', function($scope, service, config) {
-  $scope.name = config.base;
+  $scope.base = config.base;
 
 });
