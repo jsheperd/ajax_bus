@@ -1,0 +1,22 @@
+{
+  "name": "ajax_bus",
+  "homepage": "https://github.com/jsheperd/ajax_bus",
+  "authors": [
+    "jsheperd <juhasz.janos.flutemaker@gmail.com>"
+  ],
+  "description": "testing message bus from angular client to PHP server and back",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.8",
+    "bootstrap": "~3.3.6"
+  }
+}
