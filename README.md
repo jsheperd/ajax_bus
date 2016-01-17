@@ -9,7 +9,7 @@ So, how should I handle the messages ?
 What kind of protocoll should simplify my life ?
 
 # The setup
-- The server is a Slim2 PHP server with PDO.
+- The server is indifferent.
 - The client is angularjs.
 - The communication made with JSON.
 
@@ -25,7 +25,29 @@ var error =     { status: 'error',
                   data: null,
                   message: 'detailed error message' };
 ```
-
+# The answer
+Each layer should work as a proxy layer. If the result from the sublayer should be proxied. The messages about the error should be defined on the enduser perspective.
+ 
+ 
+ ```javascript
+ app.service('service', function($http, $q, config) {
+  this.get = function(url) {
+    var deferred = $q.defer();
+    
+    $http.get(config.base + url).then(
+      function(resp){
+        deferred.resolve(resp.data);
+        },
+      function(resp){
+        deferred.reject({status: 'error', data: null, message: resp.statusText});
+      }
+    );
+    
+    return deferred.promise;
+  };
+```
+ 
+ 
  
 
 
