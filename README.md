@@ -26,7 +26,7 @@ var error =     { status: 'error',
                   message: 'detailed error message' };
 ```
 # The answer
-Each layer should work as a proxy layer. If the result from the sublayer should be proxied. The messages about the error should be defined on the enduser perspective.
+Each layer should work as a proxy layer. The result from the sublayer should be proxied or replaced at case of error. The messages about the error should be defined on the enduser perspective.
  
  
  ```javascript
