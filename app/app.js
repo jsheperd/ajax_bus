@@ -12,7 +12,7 @@ app.controller('controller', function($scope, service, config) {
   $scope.base = config.base;
   
   $scope.send_data = function (){
-     console.log("OK oyu presssed me");
+     console.log("OK you presssed me");
   };
   
 });
