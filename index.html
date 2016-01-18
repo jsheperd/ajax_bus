@@ -16,10 +16,15 @@
     <h1 class="jumbotron">Testing Ajax Bus</h1>
     <div ng-controller="controller">
       <div class="md-col-6">
-        <h1>Different callings</h1>
+        <h1>Static calls</h1>
         <button class="btn btn-default" ng-click="echo()">Echo</button>
         <button class="btn btn-default" ng-click="echo_null()">Echo from not existing url</button>
         <button class="btn btn-default" ng-click="echo_no_server()">Echo from not accessible server</button>
+      </div>
+      <div class="md-col-6">
+        <h1>Dynamic PHP calls</h1>
+        <button class="btn btn-default" ng-click="inc(10)">inc</button>
+        <button class="btn btn-default" ng-click="inc('a')">inc bad</button>
       </div>
       <hr>
       <div class="md-col-6 well">

@@ -47,7 +47,8 @@ Each layer should work as a proxy layer. The result from the sublayer should be 
   };
 ```
  
- 
+The controller receives only good or bad returns. No need to handle different cases on the controller level. If the return is success, then the controller allowed to use it, but if it is error, then it has the error message for the user.
+The server side PHP also can send error messages to the frontend.
  
 
 

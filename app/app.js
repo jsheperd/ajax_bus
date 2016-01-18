@@ -83,6 +83,13 @@ app.controller('controller', function($scope, service, config) {
     );
   };
   
+  $scope.inc = function (val){
+  //  service.
+    service.post('inc.php', val).then(
+      function(resp) { $scope.response = resp;},
+      function(resp) { $scope.response = resp;}
+    );
+  };
   
   
 });
