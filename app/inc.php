@@ -3,8 +3,6 @@
 $postdata = file_get_contents("php://input");
 $request = json_decode($postdata);
     
-// Check the parameters
-//echo print_r($request);
 try {
   
   if(!is_int($request)) {
