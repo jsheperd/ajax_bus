@@ -46,6 +46,31 @@ Each layer should work as a proxy layer. The result from the sublayer should be 
     return deferred.promise;
   };
 ```
+
+The same on the server side
+```php
+$postdata = file_get_contents("php://input");
+$request = json_decode($postdata);
+    
+// Check the parameters
+//echo print_r($request);
+try {
+  
+  if(!is_int($request)) {
+    throw new Exception('It isn\'t a number. PHP');
+  }
+  echo json_encode(['status' => 'success',
+                    'data' => $request + 1,
+                    'message' => ''
+                   ]);
+} catch (Exception $e) {
+  echo json_encode(['status' => 'error',
+                    'data' => null,
+                    'message' => $e->getMessage()
+                    ]);
+}
+```
+
  
 The controller receives only good or bad returns. No need to handle different cases on the controller level. If the return is success, then the controller allowed to use it, but if it is error, then it has the error message for the user.
 The server side PHP also can send error messages to the frontend.
