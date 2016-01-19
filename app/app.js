@@ -30,7 +30,12 @@ app.service('service', function($http, $q, config) {
         deferred.resolve(resp.data);
         },
       function(resp){
-        deferred.reject({status: 'error', data: null, message: resp.statusText});
+        deferred.resolve({status: 'error', data: null, message: resp.statusText});
+        // If we would like to handle the resolved and the rejected on the same way, 
+        // - because the success tested on the message content -
+        // I prefer to use only resolve()
+        // instead of 
+        // deferred.reject({status: 'error', data: null, message: resp.statusText});
       }
     );
     
@@ -46,7 +51,7 @@ app.service('service', function($http, $q, config) {
         deferred.resolve(resp.data);
         },
       function(resp){
-        deferred.reject({status: 'error', data: null, message: resp.statusText});
+        deferred.resolve({status: 'error', data: null, message: resp.statusText});
       }
     );
     
@@ -61,7 +66,6 @@ app.controller('controller', function($scope, service, config) {
   $scope.echo = function (){
   //  service.
     service.get('response.json').then(
-      function(resp) { $scope.response = resp;},
       function(resp) { $scope.response = resp;}
     );
   };
@@ -70,7 +74,6 @@ app.controller('controller', function($scope, service, config) {
     $scope.echo_null = function (){
   //  service.
     service.get('not_existing_url').then(
-      function(resp) { $scope.response = resp;},
       function(resp) { $scope.response = resp;}
     );
   };
@@ -78,7 +81,6 @@ app.controller('controller', function($scope, service, config) {
   $scope.echo_no_server = function (){
   //  service.
     service.foo_get('anything_else').then(
-      function(resp) { $scope.response = resp;},
       function(resp) { $scope.response = resp;}
     );
   };
@@ -86,7 +88,6 @@ app.controller('controller', function($scope, service, config) {
   $scope.inc = function (val){
   //  service.
     service.post('inc.php', val).then(
-      function(resp) { $scope.response = resp;},
       function(resp) { $scope.response = resp;}
     );
   };
