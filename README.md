@@ -39,7 +39,8 @@ Each layer should work as a proxy layer. The result from the sublayer should be 
         deferred.resolve(resp.data);
         },
       function(resp){
-        deferred.reject({status: 'error', data: null, message: resp.statusText});
+        deferred.resolve({status: 'error', data: null, message: resp.statusText});
+        // In this case we needn't another function for the reject
       }
     );
     
