@@ -14,7 +14,7 @@ app.service('service', function($http, $q, config) {
         deferred.resolve(resp.data);
         },
       function(resp){
-        deferred.reject({status: 'error', data: null, message: resp.statusText});
+        deferred.resolve({status: 'error', data: null, message: resp.statusText});
       }
     );
     
